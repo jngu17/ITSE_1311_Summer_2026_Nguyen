@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+    <img src="images/logo.png" alt="Brass Bulldog Bento Bar Logo" width="100">
+
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="reservations.html">Reservations</a>
+</nav>
+
+<div class="card">
+
+<h1>Reservations</h1>
+
+<p>
+Reservations are request only and subject to availability.
+</p>
+
+<form>
+
+<label for="name">Name:</label>
+<input type="text" id="name" maxlength="20" required>
+
+<label for="email">Email:</label>
+<input type="email" id="email" required>
+
+<label for="party">Party Size:</label>
+<select id="party" required>
+<option value="">Select</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+</select>
+
+<label for="date">Date:</label>
+<input type="date" id="date" required>
+
+<label for="time">Time:</label>
+<input type="time" id="time" required>
+
+<fieldset>
+<legend>Seating Preference</legend>
+
+<input type="radio" name="seat" id="indoor">
+<label for="indoor">Indoor</label>
+
+<input type="radio" name="seat" id="patio">
+<label for="patio">Patio</label>
+
+<input type="radio" name="seat" id="window">
+<label for="window">Window</label>
+
+</fieldset>
+
+<label for="notes">Dietary Notes:</label>
+<textarea id="notes" maxlength="30"></textarea>
+
+<label>
+<input type="checkbox">
+Newsletter Opt-In
+</label>
+
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

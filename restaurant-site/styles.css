@@ -1,0 +1,78 @@
+
+/*
+Color Theme:
+Brass Gold, Cream, Steam Gray
+Font Awesome icon intended for restaurant branding.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5dc;
+    margin: 0;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+}
+
+nav {
+    background-color: #4f4f4f;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+nav a:hover {
+    color: #b8860b;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 10px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+caption {
+    font-weight: bold;
+    margin: 10px;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #eeeeee;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input,
+select,
+textarea {
+    width: 300px;
+    padding: 5px;
+}
