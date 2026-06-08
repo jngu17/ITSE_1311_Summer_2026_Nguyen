@@ -2,7 +2,9 @@
 /*
 Color Theme:
 Brass Gold, Cream, Steam Gray
-Font Awesome icon intended for restaurant branding.
+Font Awesome: 
+Gear icon is used in the Home Page h1.
+Food bowl on menu page at the end of the paragraph
 */
 
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
@@ -18,6 +20,9 @@ h1 {
 }
 
 nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     background-color: #4f4f4f;
     padding: 15px;
 }
