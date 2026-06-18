@@ -133,6 +133,14 @@ if (reservationForm) {
             errorMessage = "Seating preference is required.";
         }
 
+        if (notes.length > 30) {
+            errorMessage = "Dietary Notes must be 30 characters or less";
+        }
+
+        if (name.length > 20) {
+            errorMessage = "Name must be 20 characters or less";
+        }
+
         const oldAlert = document.getElementById("formAlert");
         if (oldAlert) {
             oldAlert.remove();
