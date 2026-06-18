@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservations - Brass Bulldog Bento Bar</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+
+        <a class="navbar-brand" href="index.html">
+            <img src="images/logo.png" alt="Brass Bulldog Bento Bar Logo" width="50">
+            Brass Bulldog Bento Bar
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="menu.html">Menu</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="reservations.html">Reservations</a>
+                </li>
+
+            </ul>
+        </div>
+
+    </div>
+</nav>
+<div class="container mt-4">
+
+<div class="card">
+
+<h1>Reservations</h1>
+
+<p>
+Reservations are request only and subject to availability.
+</p>
+
+<form id="reservationForm">
+
+<label for="name">Name:</label>
+<input type="text" id="name">
+
+<label for="email">Email:</label>
+<input type="text" id="email">
+
+<label for="party">Party Size:</label>
+<select id="party">
+<option value="">Select</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
+<option>6</option>
+<option>7</option>
+<option>8</option>
+</select>
+
+<label for="date">Date:</label>
+<input type="date" id="date">
+
+<label for="time">Time:</label>
+<input type="time" id="time">
+
+<fieldset>
+<legend>Seating Preference</legend>
+
+<input type="radio" name="seat" id="indoor">
+<label for="indoor">Indoor</label>
+
+<input type="radio" name="seat" id="patio">
+<label for="patio">Patio</label>
+
+<input type="radio" name="seat" id="window">
+<label for="window">Window</label>
+
+</fieldset>
+
+<label for="notes">Dietary Notes:</label>
+<textarea id="notes"></textarea>
+
+<label>
+<input type="checkbox">
+Newsletter Opt-In
+</label>
+
+<button type="submit">Submit</button>
+<button type="reset">Reset</button>
+
+</form>
+
+</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
