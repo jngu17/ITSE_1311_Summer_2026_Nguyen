@@ -43,6 +43,13 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
                     <a class="nav-link" href="reservations.html">Reservations</a>
                 </li>
 
+                <!-- CART BUTTON -->
+                <li class="nav-item">
+                    <a class="nav-link btn btn-warning text-dark ms-2" href="cart.html">
+                        🛒 View Cart
+                    </a>
+                </li>
+
             </ul>
         </div>
 
@@ -51,7 +58,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <div class="container mt-4">
 
-<div class="card">
+<div class="card p-3">
 
 <h1>Menu</h1>
 
@@ -61,15 +68,30 @@ for inventors, travelers, and airship crews.
 <i class="fa-solid fa-bowl-food"></i>
 </p>
 
+<!-- FILTER DROPDOWN -->
+<div class="mb-3">
+    <label for="categoryFilter" class="form-label">Filter Menu:</label>
+
+    <select id="categoryFilter" class="form-select">
+        <option value="All">All Items</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+    </select>
+</div>
+
 <img src="images/img3.jpg"
-     alt="Bento meal selection">
+     alt="Bento meal selection"
+     class="img-fluid mb-3">
 
 <div id="menuContainer"></div>
-    </div>
 
 </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="script.js"></script>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>

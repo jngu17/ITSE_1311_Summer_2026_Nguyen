@@ -86,21 +86,83 @@ const money = new Intl.NumberFormat("en-US", {
     currency: "USD"
 });
 
-const menuContainer = document.getElementById("menuContainer");
+// --------------------
+// MENU + FILTER LOGIC
+// --------------------
 
-if (menuContainer) {
-    MENU_ITEMS.forEach(item => {
+const menuContainer = document.getElementById("menuContainer");
+const categoryFilter = document.getElementById("categoryFilter");
+
+function renderMenu(filter = "All") {
+    if (!menuContainer) return;
+
+    menuContainer.innerHTML = "";
+
+    const filteredItems = MENU_ITEMS.filter(item => {
+        const mapped = item.category;
+        return filter === "All" || mapped === filter;
+    });
+
+    filteredItems.forEach(item => {
         menuContainer.innerHTML += `
             <div class="card m-3 p-3">
                 <h3>${item.name}</h3>
                 <p>${item.description}</p>
-                <p><strong>Category:</strong> ${item.category}</p>
                 <p><strong>Price:</strong> ${money.format(item.price)}</p>
+
+                <label>Quantity:</label>
+                <input type="number" id="qty-${item.id}" value="1" min="1" class="form-control w-25 mb-2">
+
+                <button class="btn btn-success" onclick="addToCart(${item.id})">
+                    Add to Cart
+                </button>
             </div>
         `;
     });
 }
 
+if (menuContainer) {
+    renderMenu();
+}
+
+if (categoryFilter) {
+    categoryFilter.addEventListener("change", function () {
+        renderMenu(this.value);
+    });
+}
+
+// --------------------
+// CART LOGIC
+// --------------------
+
+function addToCart(id) {
+    const item = MENU_ITEMS.find(i => i.id === id);
+    const qtyInput = document.getElementById(`qty-${id}`);
+    const quantity = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    const existingItem = cart.find(i => i.id === id);
+
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: quantity
+        });
+    }
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert(`${item.name} added to cart!`);
+}
+
+// --------------------
+// RESERVATION FORM (UNCHANGED FROM LAB 2)
+// --------------------
 
 const reservationForm = document.getElementById("reservationForm");
 
@@ -171,4 +233,79 @@ if (reservationForm) {
 
         reservationForm.prepend(alertBox);
     });
+}
+
+const cartContainer = document.getElementById("cartContainer");
+const cartSummary = document.getElementById("cartSummary");
+
+function loadCart() {
+    if (!cartContainer) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cartContainer.innerHTML = "";
+
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        cartSummary.innerHTML = "";
+        return;
+    }
+
+    let subtotal = 0;
+
+    cart.forEach(item => {
+        subtotal += item.price * item.quantity;
+
+        cartContainer.innerHTML += `
+            <div class="card p-3 m-2">
+                <h5>${item.name}</h5>
+                <p>Price: $${item.price}</p>
+                <p>Quantity: ${item.quantity}</p>
+                <p><strong>Total:</strong> $${(item.price * item.quantity).toFixed(2)}</p>
+
+                <button class="btn btn-sm btn-danger" onclick="removeItem(${item.id})">
+                    Remove
+                </button>
+            </div>
+        `;
+    });
+
+    let tax = subtotal * 0.08;
+    let total = subtotal + tax;
+
+    cartSummary.innerHTML = `
+        <h4>Subtotal: $${subtotal.toFixed(2)}</h4>
+        <h4>Tax (8%): $${tax.toFixed(2)}</h4>
+        <h3>Total: $${total.toFixed(2)}</h3>
+    `;
+}
+
+function removeItem(id) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart = cart.filter(item => item.id !== id);
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    loadCart();
+}
+
+function clearCart() {
+    localStorage.removeItem("cart");
+    loadCart();
+}
+
+// auto-load cart page
+if (cartContainer) {
+    loadCart();
+}
+
+function confirmCancel() {
+    localStorage.removeItem("cart");
+    window.location.href = "menu.html";
+}
+
+function confirmSubmit() {
+    localStorage.removeItem("cart");
+    window.location.href = "menu.html";
 }
